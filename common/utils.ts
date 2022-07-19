@@ -178,6 +178,11 @@ export const convertMsToMinutesSeconds = (milliseconds: number) => {
   }
 
 
+export const shuffleArray = (array: any[]) => {
+	array.sort(() => Math.random() - 0.5);
+    return array;
+};
+
 export const getQuizQuestions = async (values:formData) => {
 	
     const quizQuestions = await fetchQuestions(values) as any
@@ -200,14 +205,20 @@ export const getQuizQuestions = async (values:formData) => {
 			}
 		})
 
-		// for checking correct answers at end of game
-		correctAnswers[questionNumber] = {
-			uid: `answer-${val.incorrectAnswers.lastIndexOf(val.correctAnswer)}`,
+		// need to shuffle otherwise correct answer is always last 
+		const shuffledOrder = shuffleArray(options)
+		
+		const correctAnswerIndex = shuffledOrder.findIndex(object => {
+			return object.label === capitalizeString(val.correctAnswer)
+		});
+
+		const correctAnswer = {
+			uid: `answer-${correctAnswerIndex}`,
 			question: val.question,
 			answer: val.correctAnswer,
-			options: options
+			options: shuffledOrder
 		}
-
+		correctAnswers[questionNumber] = correctAnswer
 
 		switch (val.type) {
 			case 'Multiple Choice':
