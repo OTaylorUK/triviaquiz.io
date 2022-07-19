@@ -1,36 +1,32 @@
-import React from 'react'
-import { PrismicRichText } from '@prismicio/react'
-import * as prismicT from "@prismicio/types";
-import {
-	SliceComponentProps,
-} from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
+import { motion } from "framer-motion";
+import { animateUp, wrapperAnimationSettings } from '../../../common/framerSettings';
+import { HeroSlice } from '../../../common/types';
 import Button from '../../../components/component/Button';
-import { HeroSlice } from '../../../types/HeroSlice';
-import Buttons from '../../../components/component/Buttons';
+
 
 const Default = ({ slice }: SliceComponentProps<HeroSlice>) => {
+  const {primary, slice_type} = {...slice}
+  const {content, buttonContent, buttonAction, buttonStyle = 'primary', buttonTarget, buttonLink} = primary;
 
-  const {primary,items, slice_type} = {...slice}
-  const {title, description} = primary;
-
-  console.log({items});
-  
   return(
     <section 
       id={slice_type}
       data-type={slice_type}
-      className={`w-full pt-20 lg:pt-0 min-h-[100vh] flex justify-center items-center text-left `}
+      className={`container w-full  min-h-[60vh] py-10  flex justify-center items-center text-left `}
     >
-      <div className="flex flex-col gap-8  text-center items-center text-custom-white">
+      <motion.div {...wrapperAnimationSettings} className={`max-w-screen-md flex flex-col gap-8 lg:gap-10  text-center items-center text-custom-white`}>
           <PrismicRichText 
-            field={title}
+            field={content}
+            components={{
+              heading1: ({ children }) =>  <motion.h1 variants={animateUp} >{children}</motion.h1>,
+              paragraph: ({ children }) =>  <motion.p variants={animateUp}  className='mb-2 text-lg px-4 lg:px-10'>{children}</motion.p>,
+            }}
           />  
-           <PrismicRichText 
-            field={description}
-          /> 
-          <Buttons buttons={items} replaceKey={true}/>
-      </div>
-
+          <motion.div variants={animateUp}>
+            <Button link={buttonLink} type={buttonAction} style={buttonStyle} content={buttonContent} />
+          </motion.div>
+      </motion.div>
 
   </section>
   )

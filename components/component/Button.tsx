@@ -1,47 +1,8 @@
-import Link from 'next/link'
-import SVG from 'react-inlinesvg';
-import React, { FC } from "react";
+import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import * as prismicT from "@prismicio/types";
-import { PrismicRichText } from '@prismicio/react';
-import { ButtonProps } from '../../types/Button';
+import SVG from 'react-inlinesvg';
+import { ButtonProps } from '../../common/types';
 import { useAnalyticsEvent } from '../../hooks/useAnalytics';
-
-const formatButtonLink = (link: any) => {
-
-  const retSettings = {
-    target: '_self',
-    btnHref: '',
-    currentPage: '',
-    isCurrentPage: false,
-  }
-  
-  switch (link?.link_type.toLowerCase()) {
-    case 'web':
-      if(link?.url){
-        retSettings.btnHref = link?.url
-        retSettings.target = '_blank'
-      }
-      break;
-  
-    case 'document':
-      if(link?.slug){
-        if (link?.slug !== 'home-page') {
-          retSettings.btnHref = `/${link?.slug}`
-        }else{
-          retSettings.btnHref = `/`
-        }
-        if(retSettings.currentPage === retSettings.btnHref){
-          retSettings.isCurrentPage = true
-        }
-        retSettings.target = '_self'
-      }
-
-      break;
-  }
-
-  return retSettings
-
-}
 
 const formatButtonContent = (content: prismicT.RichTextField | null ) : JSX.Element | null => {
 
@@ -60,9 +21,10 @@ const formatButtonContent = (content: prismicT.RichTextField | null ) : JSX.Elem
   )
 }
 
-const Button: FC<ButtonProps> = ({ file, target='_self', classList ='', type='button', style = 'default', link = null, eventHandler, textFirst = true, content}) => {
 
+const Button = ({ file, target='_self', classList ='', type='button', style = 'default', link = null, eventHandler, textFirst = true, content}:ButtonProps): JSX.Element => {
 
+  const btnStyle = style!.toLowerCase()
   const { trackCustomEvent }  = useAnalyticsEvent();
 
   let isCurrentPage = false;
@@ -70,9 +32,12 @@ const Button: FC<ButtonProps> = ({ file, target='_self', classList ='', type='bu
 
   let variableClass = '';
 
-  switch (style.toLowerCase()) {
+  switch (btnStyle) {
     case 'text':
       variableClass = 'btn-text'
+      break;
+    case 'primary':
+      variableClass = 'btn-primary'
       break;
     case 'icon':
       variableClass = 'btn-icon'
@@ -91,7 +56,7 @@ const Button: FC<ButtonProps> = ({ file, target='_self', classList ='', type='bu
       break;
   }
 
-  const buttonClass = classList.concat(` ${isCurrentPage ? 'is-current-page' : ''} btn ${variableClass}`)
+  const buttonClass = classList.concat(` group ${isCurrentPage ? 'is-current-page' : ''} btn ${variableClass}`)
 
 
   const triggerEvent = () => {
@@ -101,11 +66,12 @@ const Button: FC<ButtonProps> = ({ file, target='_self', classList ='', type='bu
   }
 
   if(type === 'link' && link){
-    const {btnHref } = formatButtonLink(link)
     return (
-      <Link  href={btnHref}>
-        <a  key={`link`} className={buttonClass} target={target}>{formatButtonContent(content)}</a>
-      </Link>
+
+      <PrismicLink key={`link`} className={buttonClass} field={link}>
+        {btnStyle === 'primary' && (<span className='btn-effect  group-hover:w-32 group-hover:scale-150'></span>)}
+        {formatButtonContent(content)}
+      </PrismicLink>
     )
   }else{
     
@@ -116,13 +82,15 @@ const Button: FC<ButtonProps> = ({ file, target='_self', classList ='', type='bu
         
         return(
           <a key={`btn`} onClick={() => triggerEvent()} href={file?.url} target="_blank" className={buttonClass} rel="noreferrer">
-          {formatButtonContent(content)}
+             {btnStyle === 'primary' && (<span className='btn-effect  group-hover:w-32 group-hover:scale-150'></span>)}
+            {formatButtonContent(content)}
         </a>
         )
         break;
       default:
         return(
           <button key={`btn`} className={buttonClass}>
+            {btnStyle === 'primary' && (<span className='btn-effect  group-hover:w-32 group-hover:scale-150'></span>)} 
             {formatButtonContent(content)}
           </button>
         )
@@ -134,3 +102,6 @@ const Button: FC<ButtonProps> = ({ file, target='_self', classList ='', type='bu
 
 export default Button
 
+// <a href="#_" class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-purple-600 to-purple-500 border-purple-700 text-white">
+// <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-10"></span>
+// </a>

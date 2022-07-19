@@ -121,6 +121,13 @@
                     "placeholder": ""
                   }
                 },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
                 "defaultValue": {
                   "type": "Text",
                   "config": {
@@ -175,6 +182,13 @@
                     "placeholder": ""
                   }
                 },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
                 "defaultValue": {
                   "type": "Text",
                   "config": {
@@ -206,6 +220,52 @@
                   }
                 }
               },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "select",
+              "name": "Select",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Hero",
+              "primary": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
+                "defaultValue": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Default Value",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                },
+                "requiredErrorMsg": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Required Error Msg",
+                    "placeholder": ""
+                  }
+                }
+              },
               "items": {
                 "uid": {
                   "type": "Text",
@@ -220,15 +280,260 @@
                     "label": "Label",
                     "placeholder": ""
                   }
-                },
-                "type": {
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "radioStyled",
+              "name": "RadioStyled",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Hero",
+              "primary": {
+                "uid": {
                   "type": "Text",
                   "config": {
-                    "label": "Type",
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
+                "defaultValue": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Default Value",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                },
+                "requiredErrorMsg": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Required Error Msg",
                     "placeholder": ""
                   }
                 }
               },
+              "items": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "checkboxStyled",
+              "name": "Checkbox Styled",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Hero",
+              "primary": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
+                "defaultValue": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Default Value",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                },
+                "requiredErrorMsg": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Required Error Msg",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "checkboxBasic",
+              "name": "CheckboxBasic",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Hero",
+              "primary": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
+                "defaultValue": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Default Value",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                },
+                "requiredErrorMsg": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Required Error Msg",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "number",
+              "name": "Number",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Hero",
+              "primary": {
+                "uid": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Uid",
+                    "placeholder": ""
+                  }
+                },
+                "groupUID": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Group UID",
+                    "placeholder": ""
+                  }
+                },
+                "defaultValue": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Default Value",
+                    "placeholder": ""
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": ""
+                  }
+                },
+                "requiredErrorMsg": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Required Error Msg",
+                    "placeholder": ""
+                  }
+                },
+                "formHelp": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Form Help",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                },
+                "minValue": {
+                  "type": "Number",
+                  "config": {
+                    "label": "Min Value",
+                    "placeholder": ""
+                  }
+                },
+                "maxValue": {
+                  "type": "Number",
+                  "config": {
+                    "label": "Max Value",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {},
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
@@ -243,78 +548,26 @@
                 "socialContent": [
                   {
                     "type": "paragraph",
-                    "text": "Consectetur anim dolore cupidatat aliquip. Commodo cillum ex nulla nulla irure exercitation. In irure excepteur aliqua enim.",
+                    "text": "Consequat mollit pariatur occaecat elit mollit incididunt dolor et esse consectetur occaecat pariatur consequat labore.",
                     "spans": []
                   }
                 ],
                 "socialLink": {
                   "link_type": "Web",
-                  "url": "http://twitter.com"
+                  "url": "https://slicemachine.dev"
                 }
               },
               {
                 "socialContent": [
                   {
                     "type": "paragraph",
-                    "text": "Mollit voluptate Lorem Lorem esse nostrud fugiat laborum consectetur anim ad sunt eu pariatur et amet.",
+                    "text": "Non qui consequat do Lorem ullamco. Excepteur qui tempor eiusmod laboris tempor eiusmod magna sint nisi aute nisi.",
                     "spans": []
                   }
                 ],
                 "socialLink": {
                   "link_type": "Web",
                   "url": "https://prismic.io"
-                }
-              },
-              {
-                "socialContent": [
-                  {
-                    "type": "paragraph",
-                    "text": "Elit est cillum irure cupidatat ea. Esse laborum nostrud proident amet.",
-                    "spans": []
-                  }
-                ],
-                "socialLink": {
-                  "link_type": "Web",
-                  "url": "http://twitter.com"
-                }
-              },
-              {
-                "socialContent": [
-                  {
-                    "type": "paragraph",
-                    "text": "Cillum cupidatat consequat labore enim cupidatat labore nisi exercitation proident qui aliquip mollit quis. Ad proident sint mollit dolor nulla culpa exercitation.",
-                    "spans": []
-                  }
-                ],
-                "socialLink": {
-                  "link_type": "Web",
-                  "url": "http://twitter.com"
-                }
-              },
-              {
-                "socialContent": [
-                  {
-                    "type": "paragraph",
-                    "text": "Aliqua enim commodo voluptate in labore non et ex eiusmod quis adipisicing anim dolor magna veniam. Elit qui sint ex sunt elit proident nulla. Aliquip occaecat ipsum aliquip irure irure.",
-                    "spans": []
-                  }
-                ],
-                "socialLink": {
-                  "link_type": "Web",
-                  "url": "https://prismic.io"
-                }
-              },
-              {
-                "socialContent": [
-                  {
-                    "type": "paragraph",
-                    "text": "Est dolor non ex velit aliquip duis ut minim elit consequat officia Lorem sunt. Voluptate qui consequat nisi sit nulla minim et ut incididunt nulla.",
-                    "spans": []
-                  }
-                ],
-                "socialLink": {
-                  "link_type": "Web",
-                  "url": "http://google.com"
                 }
               }
             ],
@@ -322,21 +575,21 @@
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Magna anim laborum tempor proident fugiat quis aliquip culpa id. Nostrud sit ut dolor excepteur dolor ipsum in est reprehenderit officia in proident aliquip culpa. Veniam mollit labore esse duis et eiusmod nostrud reprehenderit exercitation eiusmod.",
+                  "text": "Nulla adipisicing ut duis labore et elit et cillum enim. Consectetur esse deserunt pariatur incididunt et nisi. Laboris ullamco minim do irure tempor do cillum anim ex voluptate pariatur aliquip ut.",
                   "spans": []
                 }
               ],
-              "uid": "iterate synergistic relationships",
+              "uid": "monetize sticky e-commerce",
               "buttonContent": [
                 {
                   "type": "paragraph",
-                  "text": "Mollit eu est sint veniam ad labore eiusmod dolore eiusmod ut. Laboris nulla laboris voluptate fugiat laborum duis occaecat quis reprehenderit laborum mollit adipisicing excepteur ad dolor.",
+                  "text": "Minim pariatur dolore sit pariatur.",
                   "spans": []
                 }
               ],
-              "buttonAction": "aggregate interactive e-markets",
-              "buttonStyle": "embrace front-end convergence",
-              "buttonTarget": "strategize end-to-end initiatives"
+              "buttonAction": "disintermediate strategic eyeballs",
+              "buttonStyle": "syndicate scalable channels",
+              "buttonTarget": "disintermediate B2B users"
             }
           },
           "test": {
@@ -348,7 +601,7 @@
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Aute nisi non dolor. Reprehenderit eiusmod esse irure sint consequat elit tempor magna ea laborum. Ut do ullamco amet mollit aliquip aliqua quis est consequat est proident aliqua et ut ex.",
+                  "text": "Et cillum anim labore consectetur non. Laboris Lorem adipisicing et id deserunt sunt exercitation id nostrud eu enim.",
                   "spans": []
                 }
               ]
@@ -360,92 +613,202 @@
             "slice_type": "forms",
             "items": [
               {
-                "uid": "embrace best-of-breed content",
-                "label": "generate e-business eyeballs"
+                "uid": "grow value-added users",
+                "label": "visualize one-to-one applications"
               },
               {
-                "uid": "facilitate proactive platforms",
-                "label": "architect extensible infrastructures"
+                "uid": "whiteboard extensible networks",
+                "label": "syndicate customized convergence"
               },
               {
-                "uid": "transition vertical eyeballs",
-                "label": "scale real-time functionalities"
+                "uid": "iterate value-added blockchains",
+                "label": "target scalable communities"
+              },
+              {
+                "uid": "syndicate web-enabled web-readiness",
+                "label": "engineer virtual supply-chains"
+              },
+              {
+                "uid": "optimize world-class functionalities",
+                "label": "disintermediate intuitive technologies"
               }
             ],
             "primary": {
-              "uid": "incentivize seamless portals",
-              "defaultValue": "leverage next-generation systems",
-              "label": "matrix impactful convergence",
-              "requiredErrorMsg": "evolve granular channels"
+              "uid": "incubate efficient synergies",
+              "groupUID": "monetize strategic metrics",
+              "defaultValue": "generate leading-edge platforms",
+              "label": "monetize front-end partnerships",
+              "requiredErrorMsg": "deliver real-time networks"
             }
           },
           "textInput": {
             "variation": "textInput",
             "name": "Text Input",
             "slice_type": "forms",
-            "items": [
-              {
-                "uid": "e-enable bleeding-edge e-commerce",
-                "label": "synthesize integrated portals",
-                "type": "envisioneer scalable platforms"
-              },
-              {
-                "uid": "empower ubiquitous models",
-                "label": "e-enable turn-key vortals",
-                "type": "deploy plug-and-play vortals"
-              },
-              {
-                "uid": "repurpose efficient bandwidth",
-                "label": "transform front-end channels",
-                "type": "redefine global channels"
-              },
-              {
-                "uid": "redefine dot-com infomediaries",
-                "label": "envisioneer synergistic mindshare",
-                "type": "scale bleeding-edge communities"
-              }
-            ],
+            "items": [],
             "primary": {
-              "uid": "incubate B2B interfaces",
-              "defaultValue": "unleash back-end vortals",
-              "label": "iterate wireless bandwidth",
-              "requiredErrorMsg": "drive intuitive infomediaries",
+              "uid": "innovate global markets",
+              "groupUID": "incentivize rich e-tailers",
+              "defaultValue": "maximize value-added initiatives",
+              "label": "repurpose synergistic e-services",
+              "requiredErrorMsg": "synergize extensible bandwidth",
               "formHelp": [
                 {
                   "type": "paragraph",
-                  "text": "Ullamco irure eiusmod ad ullamco pariatur adipisicing esse aliquip adipisicing consectetur eiusmod aliqua aute.",
+                  "text": "Commodo in duis cupidatat ea officia ad consequat irure in aliqua eu est incididunt.",
                   "spans": []
                 }
               ]
+            }
+          },
+          "select": {
+            "variation": "select",
+            "name": "Select",
+            "slice_type": "forms",
+            "items": [
+              {
+                "uid": "streamline rich blockchains",
+                "label": "seize 24/7 technologies"
+              },
+              {
+                "uid": "aggregate value-added action-items",
+                "label": "transition killer action-items"
+              },
+              {
+                "uid": "leverage granular schemas",
+                "label": "incubate virtual schemas"
+              },
+              {
+                "uid": "architect 24/7 ROI",
+                "label": "matrix intuitive relationships"
+              },
+              {
+                "uid": "integrate visionary e-services",
+                "label": "disintermediate proactive markets"
+              }
+            ],
+            "primary": {
+              "uid": "extend web-enabled users",
+              "groupUID": "visualize strategic vortals",
+              "defaultValue": "empower collaborative experiences",
+              "label": "matrix collaborative e-services",
+              "requiredErrorMsg": "scale revolutionary models"
+            }
+          },
+          "radioStyled": {
+            "variation": "radioStyled",
+            "name": "RadioStyled",
+            "slice_type": "forms",
+            "items": [
+              {
+                "uid": "harness front-end deliverables",
+                "label": "innovate turn-key experiences"
+              },
+              {
+                "uid": "leverage collaborative markets",
+                "label": "harness best-of-breed partnerships"
+              },
+              {
+                "uid": "aggregate sticky partnerships",
+                "label": "syndicate bricks-and-clicks deliverables"
+              }
+            ],
+            "primary": {
+              "uid": "seize best-of-breed action-items",
+              "groupUID": "target strategic deliverables",
+              "defaultValue": "incentivize integrated synergies",
+              "label": "brand compelling experiences",
+              "requiredErrorMsg": "disintermediate open-source infrastructures"
+            }
+          },
+          "checkboxStyled": {
+            "variation": "checkboxStyled",
+            "name": "Checkbox Styled",
+            "slice_type": "forms",
+            "items": [
+              {
+                "uid": "extend customized infrastructures",
+                "label": "incubate frictionless e-services"
+              },
+              {
+                "uid": "incentivize ubiquitous e-tailers",
+                "label": "mesh interactive functionalities"
+              },
+              {
+                "uid": "drive leading-edge communities",
+                "label": "engage cutting-edge technologies"
+              },
+              {
+                "uid": "transform world-class metrics",
+                "label": "deploy dynamic paradigms"
+              }
+            ],
+            "primary": {
+              "uid": "evolve out-of-the-box paradigms",
+              "groupUID": "envisioneer killer portals",
+              "defaultValue": "empower holistic niches",
+              "label": "unleash cross-platform partnerships",
+              "requiredErrorMsg": "engineer intuitive eyeballs"
+            }
+          },
+          "checkboxBasic": {
+            "variation": "checkboxBasic",
+            "name": "CheckboxBasic",
+            "slice_type": "forms",
+            "items": [
+              {
+                "uid": "orchestrate synergistic users",
+                "label": "strategize open-source web-readiness"
+              },
+              {
+                "uid": "deploy cutting-edge users",
+                "label": "evolve revolutionary e-markets"
+              },
+              {
+                "uid": "visualize turn-key architectures",
+                "label": "target B2B e-business"
+              },
+              {
+                "uid": "seize 24/365 technologies",
+                "label": "drive strategic models"
+              }
+            ],
+            "primary": {
+              "uid": "seize B2C mindshare",
+              "groupUID": "strategize best-of-breed interfaces",
+              "defaultValue": "redefine end-to-end web services",
+              "label": "reinvent dot-com methodologies",
+              "requiredErrorMsg": "matrix dot-com ROI"
+            }
+          },
+          "number": {
+            "variation": "number",
+            "name": "Number",
+            "slice_type": "forms",
+            "items": [],
+            "primary": {
+              "uid": "integrate cutting-edge platforms",
+              "groupUID": "envisioneer impactful schemas",
+              "defaultValue": "visualize real-time architectures",
+              "label": "innovate ubiquitous convergence",
+              "requiredErrorMsg": "implement front-end communities",
+              "formHelp": [
+                {
+                  "type": "paragraph",
+                  "text": "Minim aute amet reprehenderit sunt laborum proident cillum anim non non sint non veniam. Enim est reprehenderit amet duis ullamco nulla excepteur et est.",
+                  "spans": []
+                }
+              ],
+              "minValue": 804,
+              "maxValue": 8580
             }
           }
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
-        "screenshotPaths": {
-          "default": {
-            "path": "/Users/ollietaylor/Code/REACT/trivia-quiz/.slicemachine/assets/slices/Forms/default/preview.png",
-            "width": 800,
-            "height": 94
-          },
-          "test": {
-            "path": "/Users/ollietaylor/Code/REACT/trivia-quiz/.slicemachine/assets/slices/Forms/test/preview.png",
-            "width": 800,
-            "height": 94
-          },
-          "radioBasic": {
-            "path": "/Users/ollietaylor/Code/REACT/trivia-quiz/.slicemachine/assets/slices/Forms/radioBasic/preview.png",
-            "width": 800,
-            "height": 94
-          },
-          "textInput": {
-            "path": "/Users/ollietaylor/Code/REACT/trivia-quiz/.slicemachine/assets/slices/Forms/textInput/preview.png",
-            "width": 800,
-            "height": 94
-          }
-        }
+        "screenshotPaths": {}
       },
       "game": {
         "library": "slices",
@@ -580,6 +943,14 @@
                     "label": "Button Target",
                     "placeholder": ""
                   }
+                },
+                "buttonLink": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Button Link",
+                    "placeholder": "",
+                    "select": null
+                  }
                 }
               },
               "items": {
@@ -642,33 +1013,7 @@
                 "socialContent": [
                   {
                     "type": "paragraph",
-                    "text": "Lorem ea dolore laboris ut sunt qui culpa voluptate fugiat fugiat culpa id exercitation elit mollit. Veniam incididunt sint officia magna mollit nostrud occaecat qui amet esse fugiat eu laborum in irure.",
-                    "spans": []
-                  }
-                ],
-                "socialLink": {
-                  "link_type": "Web",
-                  "url": "http://google.com"
-                }
-              },
-              {
-                "socialContent": [
-                  {
-                    "type": "paragraph",
-                    "text": "Dolor sunt amet minim proident tempor labore minim id ullamco et elit cupidatat laboris commodo aliqua.",
-                    "spans": []
-                  }
-                ],
-                "socialLink": {
-                  "link_type": "Web",
-                  "url": "https://prismic.io"
-                }
-              },
-              {
-                "socialContent": [
-                  {
-                    "type": "paragraph",
-                    "text": "Consequat deserunt velit eu aute nostrud deserunt fugiat. Magna velit incididunt excepteur anim officia ex nostrud ullamco eiusmod eu.",
+                    "text": "Ad nisi Lorem ipsum eiusmod deserunt reprehenderit nisi ex. Tempor culpa sunt aute.",
                     "spans": []
                   }
                 ],
@@ -681,26 +1026,26 @@
                 "socialContent": [
                   {
                     "type": "paragraph",
-                    "text": "Do qui laboris velit irure deserunt ullamco dolore aute ex reprehenderit amet Lorem excepteur ex culpa. Aliqua esse enim sint ex. Ut nostrud id excepteur sunt in non proident non velit sit ea voluptate dolore esse amet.",
+                    "text": "Sint fugiat mollit occaecat velit non et aliqua adipisicing cupidatat irure consequat. Ea enim consectetur sint Lorem velit labore. Quis ad aliquip amet consectetur nostrud magna commodo cupidatat eu qui irure adipisicing qui ut.",
                     "spans": []
                   }
                 ],
                 "socialLink": {
                   "link_type": "Web",
-                  "url": "https://prismic.io"
+                  "url": "http://twitter.com"
                 }
               },
               {
                 "socialContent": [
                   {
                     "type": "paragraph",
-                    "text": "Ullamco adipisicing deserunt exercitation eu deserunt consequat ipsum ad aute tempor cupidatat nostrud ipsum labore. Nostrud duis qui mollit consectetur nisi cillum dolore minim velit pariatur in voluptate. Nostrud non fugiat laboris et consectetur nulla ullamco sunt exercitation id voluptate.",
+                    "text": "Ex officia deserunt sint voluptate nisi sunt consequat labore. Minim veniam sunt ullamco eu sint proident culpa. Commodo in irure dolor in ipsum.",
                     "spans": []
                   }
                 ],
                 "socialLink": {
                   "link_type": "Web",
-                  "url": "https://prismic.io"
+                  "url": "https://slicemachine.dev"
                 }
               }
             ],
@@ -708,21 +1053,25 @@
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Sint sit aute deserunt sunt incididunt sunt aute voluptate. Anim do aute exercitation ullamco nulla quis.",
+                  "text": "Amet ullamco sint et dolore mollit duis laborum sit exercitation voluptate.",
                   "spans": []
                 }
               ],
-              "uid": "transition leading-edge communities",
+              "uid": "monetize vertical ROI",
               "buttonContent": [
                 {
                   "type": "paragraph",
-                  "text": "Labore magna dolore incididunt fugiat laborum nulla eu esse deserunt commodo veniam non ea adipisicing. Elit consequat dolore enim eiusmod aute sint. Laborum ad nulla consequat.",
+                  "text": "Elit elit commodo aliqua exercitation minim excepteur qui mollit ullamco aute ad aute nisi dolore. Nisi labore quis quis nisi et ad amet ipsum velit ex sit.",
                   "spans": []
                 }
               ],
-              "buttonAction": "recontextualize distributed functionalities",
-              "buttonStyle": "matrix impactful channels",
-              "buttonTarget": "morph revolutionary markets"
+              "buttonAction": "cultivate compelling infrastructures",
+              "buttonStyle": "e-enable dot-com infrastructures",
+              "buttonTarget": "visualize e-business e-services",
+              "buttonLink": {
+                "link_type": "Web",
+                "url": "http://twitter.com"
+              }
             }
           },
           "test": {
@@ -734,11 +1083,11 @@
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Occaecat laboris ipsum nisi sit sint incididunt occaecat laboris.",
+                  "text": "Ea cupidatat adipisicing aute id sit eu laboris laborum est nostrud adipisicing proident. Velit amet adipisicing nisi. Sint aliquip in minim occaecat magna pariatur aliquip in nisi labore tempor excepteur nulla.",
                   "spans": []
                 }
               ],
-              "dfd": "unleash intuitive relationships"
+              "dfd": "utilize integrated channels"
             }
           }
         },

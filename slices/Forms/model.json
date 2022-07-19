@@ -113,6 +113,13 @@
             "placeholder": ""
           }
         },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
         "defaultValue": {
           "type": "Text",
           "config": {
@@ -167,6 +174,13 @@
             "placeholder": ""
           }
         },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
         "defaultValue": {
           "type": "Text",
           "config": {
@@ -198,6 +212,52 @@
           }
         }
       },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "select",
+      "name": "Select",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Hero",
+      "primary": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
+        "defaultValue": {
+          "type": "Text",
+          "config": {
+            "label": "Default Value",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "requiredErrorMsg": {
+          "type": "Text",
+          "config": {
+            "label": "Required Error Msg",
+            "placeholder": ""
+          }
+        }
+      },
       "items": {
         "uid": {
           "type": "Text",
@@ -212,15 +272,260 @@
             "label": "Label",
             "placeholder": ""
           }
-        },
-        "type": {
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "radioStyled",
+      "name": "RadioStyled",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Hero",
+      "primary": {
+        "uid": {
           "type": "Text",
           "config": {
-            "label": "Type",
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
+        "defaultValue": {
+          "type": "Text",
+          "config": {
+            "label": "Default Value",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "requiredErrorMsg": {
+          "type": "Text",
+          "config": {
+            "label": "Required Error Msg",
             "placeholder": ""
           }
         }
       },
+      "items": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "checkboxStyled",
+      "name": "Checkbox Styled",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Hero",
+      "primary": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
+        "defaultValue": {
+          "type": "Text",
+          "config": {
+            "label": "Default Value",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "requiredErrorMsg": {
+          "type": "Text",
+          "config": {
+            "label": "Required Error Msg",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "checkboxBasic",
+      "name": "CheckboxBasic",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Hero",
+      "primary": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
+        "defaultValue": {
+          "type": "Text",
+          "config": {
+            "label": "Default Value",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "requiredErrorMsg": {
+          "type": "Text",
+          "config": {
+            "label": "Required Error Msg",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "number",
+      "name": "Number",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Hero",
+      "primary": {
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "Uid",
+            "placeholder": ""
+          }
+        },
+        "groupUID": {
+          "type": "Text",
+          "config": {
+            "label": "Group UID",
+            "placeholder": ""
+          }
+        },
+        "defaultValue": {
+          "type": "Text",
+          "config": {
+            "label": "Default Value",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "requiredErrorMsg": {
+          "type": "Text",
+          "config": {
+            "label": "Required Error Msg",
+            "placeholder": ""
+          }
+        },
+        "formHelp": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Form Help",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "minValue": {
+          "type": "Number",
+          "config": {
+            "label": "Min Value",
+            "placeholder": ""
+          }
+        },
+        "maxValue": {
+          "type": "Number",
+          "config": {
+            "label": "Max Value",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]

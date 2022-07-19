@@ -1,12 +1,9 @@
 import React, { FC } from "react";
-import { resolveVariation } from '../../utils/helpers';
+import { SliceProps } from "../../common/types";
+import { resolveVariation } from '../../common/utils';
 import * as SectionComponents from './variations'
 
-interface LayoutProps {
-  slice: any,
-}
-
-const Hero: FC<LayoutProps> = ({ slice }) => {
+const Hero: FC<SliceProps> = ({ slice }) => {
   const SectionComponent = resolveVariation(slice?.variation, SectionComponents)
 
   if (!SectionComponent) {

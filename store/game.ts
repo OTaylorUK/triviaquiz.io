@@ -1,23 +1,7 @@
 import create from "zustand";
 import { persist } from 'zustand/middleware'
-import { getQuizQuestions } from "../utils/helpers";
-
-interface GameStore {
-    questions?: any[] | undefined | never[]
-    answers?: any | undefined
-    initialValues?: any | undefined
-    activeStep: number
-    resultMessage: string
-    results: any[] | null
-    setQuestions: (questions: any[]) => void;
-    setAnswers: (answers: any[]) => void;
-    setInitialValues: (initialValues: any[]) => void;
-    setupQuiz: (initialValues: quizSettings) => void;
-    createNewGame: (initialValues: any[]) => void;
-    updateActiveStep: (number: number) => void;
-    setMessage: (resultMessage: string) => void;
-    setResults: (resultMessage: any[] | null) => void;
-}
+import { GameStore, quizSettings } from "../common/types";
+import { getQuizQuestions } from "../common/utils";
 
 const initialState = {
     questions: [],
@@ -25,23 +9,19 @@ const initialState = {
     answers: {},
     initialValues: {},
     activeStep: 0,
-    resultMessage: ''
+    resultMessage: '',
+    startTime: null
 }
 
-interface quizSettings {
-  avatar: any;
-  name: string
-  category: any;
-  difficulty: any;
-  limit: any;
-  question_region: any;
-}
 
 export const gameStore = create<GameStore>()(persist(
-      (set, get) => ({
+      (set) => ({
         ...initialState,
         setQuestions: (newQuestions: any[]) => set(
           () => ({ questions: newQuestions })
+        ),
+        quizStartTime: (time: any) => set(
+          () => ({ startTime: time })
         ),
         setResults: (newResults: any[] | null) => set(
           () => ({ results: newResults })
@@ -71,7 +51,11 @@ export const gameStore = create<GameStore>()(persist(
         },
         createNewGame:  () => {
           // clear settings & quiz -> redirect to /create-page
-          set({ questions: []});
+          set({ 
+            questions: [],
+            answers: {},
+            initialValues: {},
+          });
         }
     }),
   {

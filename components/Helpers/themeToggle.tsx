@@ -1,11 +1,9 @@
 
-import React, { FC,useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { ThemeToggleProps } from "../../common/types";
 import { useThemeContext } from '../../store/theme';
-import { ThemeToggleProps } from "../../types/Helpers";
 
-
-const ThemeToggle: FC<ThemeToggleProps> = ({className}) => {
-
+const ThemeToggle = ({className}:ThemeToggleProps): JSX.Element => {
   const { isDark, setIsDark } = useThemeContext();
 
   const [displaySettings, setDisplaySettings] = useState({
@@ -51,12 +49,7 @@ const ThemeToggle: FC<ThemeToggleProps> = ({className}) => {
           </div>
           <span className='font-gaegu uppercase text-custom-secondary group-hover:text-custom-accent'>Toggle <span>{displaySettings.text}</span> mode</span>
       </button>
-
-
-    
     </>
-
-    
   )
 }
 

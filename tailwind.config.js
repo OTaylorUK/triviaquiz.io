@@ -12,11 +12,14 @@ module.exports = {
       colors: {
         'custom-primary': 'var(--custom-primary)',
         'custom-secondary': 'var(--custom-secondary)',
+        'custom-tertiary': 'var(--custom-tertiary)',
         'custom-white': 'var(--custom-white)',
+        'custom-faded-dark': 'var(--custom-faded-dark)',
+        'custom-faded-light': 'var(--custom-faded-light)',
         'custom-accent-primary': 'var(--custom-accent-primary)',
         'custom-accent-secondary': 'var(--custom-accent-secondary)',
-        'custom-faded-light': 'var(--custom-faded-light)',
-
+        'custom-failure': 'var(--custom-failure)',
+        'custom-success': 'var(--custom-success)',
       },
       fontFamily: {
         'sans': ['"Hind Siliguri"', ...defaultTheme.fontFamily.sans],

@@ -21,16 +21,24 @@ export const repositoryName = prismic.getRepositoryName(endpoint)
  */
 export const linkResolver = (doc) => {
   switch (doc.type) {
-    case 'homepage':
-      return '/'
-    case 'page':
-      if(doc.uid === 'home'){
+      case 'homepage':
         return '/'
-      }else{
-        return `/${doc.uid}`
-      }
+      break;
+
+      case 'site-page':
+        if(doc.uid === 'home'){
+          return '/'
+        }else if(doc.uid === 'create'){
+          return `/play/${doc.uid}`
+        }else{
+          return `/${doc.uid}`
+        }
+      break;
+
     default:
       return null
+
+      break;
   }
 };
 

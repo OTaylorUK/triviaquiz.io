@@ -62,6 +62,12 @@
     "Forms": {
       "default": {
         "primary": {}
+      },
+      "textInput": {
+        "items": {}
+      },
+      "select": {
+        "primary": {}
       }
     }
   }

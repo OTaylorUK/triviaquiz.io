@@ -29,6 +29,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         </PrismicPreview>
       </PrismicProvider>
 
+      <Script
+        async
+        data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOAT_COUNTER_CODE}.goatcounter.com/count`}
+        // data-goatcounter-settings='{"allow_local": true}'
+        src="//gc.zgo.at/count.js"  
+      />
+
+
     </ThemeProvider>
 
   )

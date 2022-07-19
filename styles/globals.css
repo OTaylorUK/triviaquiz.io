@@ -1,5 +1,5 @@
 :root {
-	@apply dark;
+	@apply light;
 }
 
 
@@ -18,6 +18,8 @@
 	--custom-faded-light: var(--theme-light-faded-light);
 	--custom-accent-primary: var(--theme-light-accent-primary);
 	--custom-accent-secondary: var(--theme-light-accent-secondary);
+	--custom-failure: var(--theme-light-failure);
+	--custom-success: var(--theme-light-success);
 }
 
 .dark{
@@ -29,6 +31,8 @@
 	--custom-faded-light: var(--theme-dark-faded-light);
 	--custom-accent-primary: var(--theme-dark-accent-primary);
 	--custom-accent-secondary: var(--theme-dark-accent-secondary);
+	--custom-failure: var(--theme-dark-failure);
+	--custom-success: var(--theme-dark-success);
 }
 
 
@@ -55,7 +59,7 @@ a {
 @layer base {
 
 	html, body{
-		@apply bg-custom-white;
+		@apply bg-custom-primary;
 	}
 
 	/* Typography */
@@ -112,10 +116,35 @@ a {
 
 	
 	::selection {
-		@apply text-custom-white bg-custom-accent-secondary
+		@apply text-custom-white bg-custom-accent-primary
 	}
 
+	select{
+		-webkit-appearance:none;
+	}
 
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap; /* added line */
+		border: 0;
+	}
+
+	.fill-screen{
+		/* min-height: calc(100vh - 168px); */
+		min-height: calc(100vh - 84px);
+		/* padding-top: 84px */
+	}
+
+	
+
+
+	
 	.hover-class{
 		@apply  -z-10 opacity-20 absolute -bottom-[10%] left-0 h-[10%] w-full bg-gradient-to-br  from-custom-accent-primary to-custom-white  transition-transform  duration-300  scale-x-[0%] origin-left;
 	}
@@ -168,14 +197,10 @@ a {
 
 
 
-	h1 strong::selection {
-		/* @apply   bg-gradient-to-br  from-custom-accent-primary to-custom-accent-secondary  bg-clip-text ; */
-		-webkit-text-fill-color:var(--custom-white);
-	}
 
 
 	h1 {
-		@apply   text-3xl  md:text-6xl md:leading-tight  ;
+		@apply   text-3xl  md:text-7xl md:leading-tight  ;
 	}
 
 	/* 60px -> 24px  */
@@ -283,30 +308,73 @@ a {
 
 @layer components {
 
-	.form-input{
-		@apply border-none bg-white bg-opacity-10 rounded p-4 overflow-hidden max-h-40
-	}
-
 	.field-group{
-		@apply flex-1 flex  flex-col gap-2
-
+		@apply flex-1 lg:flex-none  bg-custom-secondary p-6 lg:p-10  w-full flex  flex-col gap-6 rounded-xl justify-center lg:justify-start items-center text-custom-white text-center
 	}
+
+
+	.field-inner{
+		@apply flex-1 justify-center max-w-full w-full relative overflow-hidden flex flex-col  gap-6 lg:gap-10
+	}
+
+	.field-col{
+		@apply max-w-full w-full relative overflow-hidden flex flex-1 flex-col  gap-3 lg:gap-8 justify-between
+	}
+
+	.field-col *{
+		@apply flex-1 flex justify-center items-center text-center
+	}
+
+	.form-label{
+		@apply font-medium text-base lg:text-2xl text-custom-faded-light
+	}
+
+	.form-input{
+		@apply w-full border-none bg-white bg-opacity-90 rounded p-4 overflow-hidden max-h-40 text-custom-primary text-center 
+	}
+
+	input:focus-visible {
+		outline-style: solid;
+		outline-offset: -3px;
+	}
+
 	.form-helper{
-		@apply text-red-500 text-sm
+		@apply bg-custom-failure text-custom-white p-4 rounded-md text-sm w-full
 	}
 	.form-helper:first-letter{
 		@apply uppercase
 	}
 
+	.btn-float{
+		@apply hover:-translate-y-1 transition-transform shadow-sm hover:shadow-md
+	}
+
 	.btn{
-		@apply flex flex-wrap gap-4 flex-row items-center justify-center rounded-lg cursor-pointer text-base  text-custom-faded-light  font-sans
+		@apply flex flex-wrap gap-4 flex-row items-center justify-center rounded-lg cursor-pointer text-base font-light text-custom-faded-light  font-sans 
 	}
 	.btn *{
-		@apply font-light  text-inherit fill-current
+		@apply   text-inherit fill-current
+	}
+
+	.btn-animated{
+		@apply btn px-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform py-4 bg-custom-secondary  
 	}
 
 	.btn-default{
-		@apply px-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform py-4 bg-custom-secondary  
+		@apply btn px-6 py-3 lg:py-4 btn-float  disabled:opacity-70    bg-custom-primary 
+	}
+
+
+	.btn-primary{
+		@apply btn overflow-hidden  relative  items-center justify-center px-6 py-3  cursor-pointer  active:shadow-none shadow-md bg-custom-primary border-custom-primary 
+	}
+
+	.btn-effect{
+		@apply absolute w-20 h-20  scale-0 transition-all duration-500 ease-out bg-white rounded-full  opacity-10
+	}
+
+	.btn-default-accent{
+		@apply btn-default bg-custom-accent-primary  
 	}
 
 	.btn-text{
@@ -314,7 +382,7 @@ a {
 	}
 
 	.btn-icon{
-		@apply p-2 hover:text-custom-accent-primary hover:-translate-y-1 transition-transform
+		@apply p-2 bg-custom-primary rounded-lg hover:text-custom-accent-primary hover:-translate-y-1 transition-transform
 	}
 
 	/* ghost */

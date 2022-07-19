@@ -1,181 +1,160 @@
-
 import { Form, Formik } from "formik";
-import React, { FC,  useCallback,  useEffect,  useRef, useState } from "react";
-import  {ReactNode } from "react";
-import * as Yup from 'yup';
-import { userStore } from "../../../store/user";
-import { getGeoInfo, getQuizQuestions } from "../../../utils/helpers";
-// import {formFields,initialValues, category, settings, user} from "./formFields";
-// import InnerForm from "./InnerForm";
-import axios from "axios"
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import * as Yup from 'yup';
+import shallow from 'zustand/shallow';
+import { animateUp, wrapperAnimationSettings } from "../../../common/framerSettings";
+import { FormWrapperProps } from "../../../common/types";
+import { getGeoInfo } from "../../../common/utils";
 import { gameStore } from "../../../store/game";
-import shallow from 'zustand/shallow'
+import { gameSettingStore } from "../../../store/user";
+import Loader from "../../component/Loader";
+import { AppFooter } from "../../Footer";
+import FormFields from "../FormFields";
 
 
-interface FooterProps {
-  children?: ReactNode,
-  quiz: any
+const _renderStepContent = (step: any,  uniqueGroups: { [x: string]: any; }, groupObjects: { [x: string]: any; }, formikFunc?:any) => {
+  const curSelection = uniqueGroups[step]
+  const currentSlide = groupObjects[curSelection]
+  return (
+    <>
+      <FormFields data={currentSlide} formikFunc={formikFunc}/>
+    </>
+  )
 }
 
 
-function useHasMounted() {
-  const [hasMounted, setHasMounted] = useState(false)
-
-  useEffect(() =>{
-    setHasMounted(true)
-  }, [])
-
-  return hasMounted
-}
-
-function _sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
-
-
-
-const Dashboard = ({ children, quiz}:FooterProps): JSX.Element => {
-  const [activeStep, setActiveStep] = useState(0);
+const Dashboard = ({initialValues, numOfGroups, uniqueGroups, groupObjects}:FormWrapperProps): JSX.Element => {
   const router = useRouter()
-
-
+ 
   const [hasMounted, setHasMounted] = useState(false)
+  const [isCreatingGame, setCreatingGame] = useState<boolean>(false)
+
+  const {avatar, name, categories, difficulty, limit, userLocation, createNewSettings, setInitialRegion,activeStep, updateActiveStep: setActiveStep }: (any) = gameSettingStore(state => ({ 
+    avatar: state.avatar,
+    name: state.name,
+    categories: state.categories,
+    difficulty: state.difficulty,
+    limit: state.limit,
+    userLocation: state.userLocation,
+    activeStep: state.activeStep,
+    createNewSettings: state.createNewSettings,
+    setInitialRegion: state.setInitialRegion,
+    updateActiveStep: state.updateActiveStep,
+    
+  }), shallow)
+
+
+  const { setupQuiz,setResults,updateActiveStep } = gameStore(state => ({ 
+    setupQuiz: state.setupQuiz,
+    setResults: state.setResults,
+    updateActiveStep: state.updateActiveStep,
+
+  }), shallow)
+
 
   useEffect(() =>{
-
+    // automatically selects question location based on user geolocation
+    const getLocationData = async () => {
+      const result = await getGeoInfo()
+      setInitialRegion(result.data.country_code)
+    }
+    
+    getLocationData()
     setHasMounted(true)
 
-  },[])
+  },[setInitialRegion])
+
+  // merge local store settings with default values
+  const settingStore: any =  {
+    avatar,
+    name,
+    categories,
+    difficulty,
+    limit,
+    userLocation,
+  }
+  Object.keys(initialValues).forEach(function(key) {
+    initialValues[key] = settingStore?.[key] ? settingStore[key] :  initialValues[key]
+  })
 
 
-  if (!hasMounted) return <div>Loading....</div>
-
-
-  if(activeStep === formFields.length) {
+  if(isCreatingGame || !hasMounted || userLocation === ""){
     return(
-      <div>SUCCESS HERE! - start the game</div>
+      <Loader/>
     )
   }
+  const isLastStep = activeStep === numOfGroups - 1;
+  const curSelection = uniqueGroups[activeStep]
+  const currentSlide = groupObjects[curSelection]
+  const currentValidationSchema =  Yup.object().shape(currentSlide['validationSchema']);
 
- 
-
-  const currentValidationSchema = formFields[activeStep]['validationSchema'];
   
-  const isLastStep = activeStep === formFields.length - 1;
+
 
   const _handleSubmit = (values: any, actions: any) => {
 
-    switch (activeStep) {
-      case 0:
-        updateUser(values.name, values.avatar)
-        break;
-      case 1:
-        updateCategory(values.category)
-        break;
+    const selection = values.dashboard;
 
-      case 2:
-        console.log('HERE');
-        updateSettings(values.difficulty, values.limit)
-        setQuestionRegion(values.question_region)
+    switch (selection) {
+      case 'play-game':
+        router.push('/play/create')
+        break;
+      case 'sign-in':
+        router.push('/login')
+        break;
+      case 'sign-up':
+        router.push('/signup')
         break;
       default:
         break;
     }
-
-
-    if (isLastStep) {
-      _submitForm(values, actions);
-      console.log('Reached the end!');
-      
-    } else {
-      console.log('eeweew@');
-
-      setActiveStep(activeStep + 1);
-      actions.setTouched({});
-      actions.setSubmitting(false);
-    }
-
-
+   
   }
 
-  
-
-  const _submitForm = async (values: any, actions: any) => {
-    await _sleep(1000);
-    alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
 
 
-    // setupQuiz(values)
-    // const quizQuestions = await getQuizQuestions(values) as any
-    
-    // //
-    // createQuiz(quizQuestions)
-    router.push('/play')
-
-    setActiveStep(activeStep + 1);
-  }
 
   const _handleBack = () => {
     console.log('go back');
-    
     setActiveStep(activeStep - 1);
-  }
-
-
-  // uses game store
-  const initialValues = {
-    avatar: avatar,
-    name: name,
-    category: category,
-    difficulty: difficulty,
-    limit: limit,
-    question_region: question_region,
   }
 
   
   return (
     <>
-      {activeStep === formFields.length ? (
-          // <CheckoutSuccess />
-          <div>SUCCESS</div>
-        ) : (
-          <Formik
-            initialValues={initialValues}
-            validationSchema={currentValidationSchema}
-            onSubmit={_handleSubmit}
-          >
-            {({ isSubmitting }) => (
-              <Form id={'test1'} className='max-w-[50%] m-auto border bg-slate-800 p-2 flex flex-col gap-5 justify-center items-center'>
-                {_renderStepContent(activeStep, quiz)}
+     <Formik
+        initialValues={initialValues}
+        validationSchema={currentValidationSchema}
+        onSubmit={_handleSubmit}
+      >
+        {({ isSubmitting, setFieldValue, setFieldTouched, errors }) => {
+          const hasErrors = Object.keys(errors).length === 0 ? false : true
 
-                <div className=" w-full flex flex-row flex-wrap">
-                  {activeStep !== 0 && (
-                    <button className="flex-1 btn-default bg-red-500" onClick={_handleBack} type="button" >
-                      Back
-                    </button>
-                  )}
-                  <div className=" flex-1 " >
-                    <button
-                      className="btn-default w-full bg-red-200"
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      {isLastStep ? 'Place order' : 'Next'}
-                    </button>
-                    {isSubmitting && (
-                      <div>Loading...</div>
-                    )}
-                  </div>
-                </div>
+          const formikFunc = {
+            setFieldValue,
+            setFieldTouched
+          }
+          
+          return (
+            <>
+              <Form id={'dashboard'} className='w-full p-0  flex-1 flex flex-col justify-center items-center'>
+
+                <motion.div {...wrapperAnimationSettings} className={`max-w-screen-md w-full px-4 flex-1 py-6 lg:py-10 flex flex-col gap-5 justify-center items-center`}>
+                   <motion.div variants={animateUp} className=" w-full flex-1 flex flex-col gap-5 justify-center items-center" >
+                    {_renderStepContent(activeStep,uniqueGroups, groupObjects, formikFunc)}
+                  </motion.div>
+                </motion.div>
+
+
+                <AppFooter submitMessage={'Proceed'} handleBack={_handleBack} activeStep={activeStep} isSubmitting={isSubmitting} isLastStep={isLastStep} hasErrors={hasErrors} cancelLink={'/'}/>
+
               </Form>
-            )}
-          </Formik>
-        )}
-
+            </>
+          )
+        }}
+        </Formik>
     </>
   )
 };

@@ -1,53 +1,47 @@
 import create from "zustand";
-import { persist } from 'zustand/middleware'
-import { getQuizQuestions } from "../utils/helpers";
-
-interface GameStore {
-    name: string ;
-    avatar?: any | undefined;
-    category?: any | undefined;
-    difficulty?: any | undefined;
-    limit: number ;
-    question_region?: any | undefined;
-    quiz?: any[] | undefined
-    updateUser: (name: string, avatar: string) => void;
-    updateCategory: (category: string) => void;
-    updateSettings: (difficulty: string, limit: number) => void;
-    setQuestionRegion: (location: string) => void;
-    setInitialRegion: (location: string) => void;
-}
+import { persist } from 'zustand/middleware';
+import { GameSettingStore } from "../common/types";
 
 const initialState = {
     name: '',
-    avatar: 'squid',
-    category: [],
+    avatar: 'adventurerNeutral-0',
+    categories: ['random'],
     difficulty: 'medium',
     limit: 10,
-    question_region: '',
+    activeStep: 0,
+    userLocation: '',
 }
 
-export const userStore = create<GameStore>()(persist(
+export const gameSettingStore = create<GameSettingStore>()(persist(
       (set, get) => ({
         ...initialState,
-        updateUser: (newName: any, newAvatar: any) => set(
-          () => ({ name: newName, avatar: newAvatar })
+        setUserInfo: (newName: any, newLocation: any) => set(
+          () => ({ name: newName, userLocation: newLocation})
         ),
-
+        createNewSettings: (values: any) => set(
+          () => (values)
+        ),
+        setAvatar: (newAvatar: any) => set(
+          () => ({ avatar: newAvatar })
+        ),
+        updateActiveStep: (newNumber: any) => set(
+          () => ({ activeStep: newNumber })
+        ),
         setInitialRegion: (newLocation: any) => set(
           (state) => {
             // if nothing set (by user) then automatically add the user ip country in\
-            if(state.question_region === ""){
+            if(state.userLocation === ""){
               return(
-                { question_region: newLocation}
+                { userLocation: newLocation}
               )
             }else{return state}
           }
         ),
         setQuestionRegion: (newLocation: any) => set(
-          () => ({question_region: newLocation})
+          () => ({userLocation: newLocation})
         ),
         updateCategory: (newCategory: any) => set(
-          () => ({ category: newCategory})
+          () => ({ categories: newCategory})
         ),
         updateSettings: (newDifficulty: any, newLimit: number) => set(
           () => ({ difficulty: newDifficulty, limit: newLimit })

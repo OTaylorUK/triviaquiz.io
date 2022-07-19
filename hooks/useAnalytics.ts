@@ -2,7 +2,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-// make typescript happy
 declare global {
   interface Window {
     goatcounter?: any

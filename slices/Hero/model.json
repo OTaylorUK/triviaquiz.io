@@ -56,6 +56,14 @@
             "label": "Button Target",
             "placeholder": ""
           }
+        },
+        "buttonLink": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {
