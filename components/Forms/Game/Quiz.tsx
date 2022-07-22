@@ -52,7 +52,7 @@ const Quiz = (): JSX.Element => {
   },[activeStep,quizStartTime])
 
   
-  if (!hasMounted || !questions) return <div>Loading....</div>
+  if (!hasMounted || !questions) return <Loader/>
 
   const isLastStep = activeStep === questions.length - 1;
   
@@ -82,6 +82,8 @@ const Quiz = (): JSX.Element => {
       const isCorrect = value.uid === answer ? true : false
       const userAnswer: any = value.options.filter((val: { uid: any; }) => val.uid === answer);
      
+      // console.log({value});
+      
       return{
         isCorrect: isCorrect,
         questions: value.question,

@@ -30,6 +30,9 @@ const App = React.forwardRef<HTMLDivElement, AppHeaderProps>(({title, limit = 0,
     }, 600);
   }
 
+  wrapperAnimationSettings['viewport']  = { once: true, amount: 0 }
+
+  
   return (
     <motion.div ref={ref} {...wrapperAnimationSettings} className={`w-full flex  flex-row flex-wrap fixed top-0 left-0 text-custom-white  z-10`}>
 

@@ -41,6 +41,9 @@ const App = ({submitMessage = 'Play', handleBack, activeStep, isSubmitting, isLa
     }, 600);
 
   }
+
+  wrapperAnimationSettings['viewport']  = { once: true, amount: 0 }
+
   
   return (
 

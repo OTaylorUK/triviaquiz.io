@@ -1,12 +1,12 @@
-import axios from "axios"
+import axios from "axios";
 import * as Yup from 'yup';
 import { answerProp, formData, questionProps } from "./types";
 
 
 export const capitalizeString = (str: string) => {
-    if (typeof str !== 'string' || !str) return str
+	if (typeof str !== 'string' || !str) return str
 
-    return str.charAt(0).toUpperCase() + str.slice(1)
+	return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 export const numIsOdd = (index: number) => {
@@ -16,57 +16,57 @@ export const numIsOdd = (index: number) => {
 
 export const resolveVariation = (variation: string, SectionComponents: any) => {
 	const Section = SectionComponents[capitalizeString(variation)]
-  
+
 	if (Section) {
-	  return Section
+		return Section
 	}
-  
+
 	console.error('Cant find section', capitalizeString(variation))
 	return null
 }
 
-export const outputVariableString = (val:string | undefined | (string | undefined)[] ) => {
+export const outputVariableString = (val: string | undefined | (string | undefined)[]) => {
 	let returnString: any = '';
-	if(Array.isArray(val)){
+	if (Array.isArray(val)) {
 		let retArr: any = []
 
 		val.forEach(element => {
-		let val = outputVariableString(element);
-		if(val.length > 0 ){
-			retArr = [...retArr, outputVariableString(element)]
-		}
+			let val = outputVariableString(element);
+			if (val.length > 0) {
+				retArr = [...retArr, outputVariableString(element)]
+			}
 		});
 
 		returnString += retArr.join(' ')
-	}else if(typeof val !==  'undefined' && typeof val !==  null){
+	} else if (typeof val !== 'undefined' && typeof val !== null) {
 		returnString += val
 	}
 
 	return returnString
 }
 
-export const findAndReplaceHolder = (replaceVals: any, str:string ) => {
+export const findAndReplaceHolder = (replaceVals: any, str: string) => {
 	var placeholders = str?.match(/\$(.*?)\$/g)
 	if (placeholders) {
 		let newString = '';
 
 		placeholders?.map((placeholder, i) => {
 
-		// text without placeholder characters
-		var phText: string = placeholder.substring(1, placeholder.length - 1);
+			// text without placeholder characters
+			var phText: string = placeholder.substring(1, placeholder.length - 1);
 
-		// replacen with new value
-		if (replaceVals[phText as unknown as number]) {
-			if (newString !== '') {
-			newString = newString.replace(placeholder, replaceVals[phText as unknown as number])
-			
-			} else {
-			if (str) {
-				newString = str?.replace(placeholder, replaceVals[phText as unknown as number])
+			// replacen with new value
+			if (replaceVals[phText as unknown as number]) {
+				if (newString !== '') {
+					newString = newString.replace(placeholder, replaceVals[phText as unknown as number])
+
+				} else {
+					if (str) {
+						newString = str?.replace(placeholder, replaceVals[phText as unknown as number])
+					}
+
+				}
 			}
-			
-			}
-		}
 		})
 		return newString;
 	} else {
@@ -81,15 +81,15 @@ export const getQuizCategories = async () => {
 	const response = await axios.get(sourceURL);
 	const categories = await response.data
 	const quizCategories = formatQuizCategories(categories)
-  
-    return quizCategories;
+
+	return quizCategories;
 }
 
 
 export const findTheLongestString = (myarry: any[]) => {
-    var max = myarry[0].length;
-    myarry.map(item => max = Math.max(max, item.length));
-    return myarry.filter(item => item.length == max);
+	var max = myarry[0].length;
+	myarry.map(item => max = Math.max(max, item.length));
+	return myarry.filter(item => item.length == max);
 }
 
 
@@ -102,58 +102,75 @@ export const formatQuizCategories: any = (categories: any[]) => {
 		label: 'Random',
 		img: `/categories/random`
 
-	  }
-	  formattedCategores.push(random)
+	}
+	formattedCategores.push(random)
 
 
 	for (const [key, value] of Object.entries(categories)) {
-	  const mainString = findTheLongestString(value as []) // required due to the way the data is returned with tags in variable order
-	  const filename = mainString[0]
+		const mainString = findTheLongestString(value as []) // required due to the way the data is returned with tags in variable order
+		const filename = mainString[0]
 
-	  const newObj = {
-		uid: filename,
-		label: key,
-		img: `/categories/${filename}`
+		const newObj = {
+			uid: filename,
+			label: key,
+			img: `/categories/${filename}`
 
-	  }
-	  formattedCategores.push(newObj)
+		}
+		formattedCategores.push(newObj)
 	}
 
 	return formattedCategores
 }
 
-  
+
 export const getGeoInfo = async () => {
 
 	return await axios({
 		method: "GET",
 		url: "https://ipapi.co/json/",
-	  })
+	})
 };
 
 
 
 
-const formatForAPI = (values: formData) =>{
+const formatForAPI = (values: formData) => {
 
-    const {limit, categories, difficulty, userLocation} = values
-    const allCategories = categories.join(',')
+	const { limit, categories, difficulty, userLocation } = values
+	const allCategories = categories.join(',')
 	const finalCategories = allCategories === 'random' ? '' : `&categories=${categories}`
 
-    const requestURL = `https://the-trivia-api.com/api/questions?limit=${limit}${finalCategories}&difficulty=${difficulty}&region=${userLocation}`
+	const requestURL = `https://the-trivia-api.com/api/questions?limit=${limit}${finalCategories}&difficulty=${difficulty}&region=${userLocation}`
 
-	console.log({requestURL});
-	
+	console.log({ requestURL });
+
 	return requestURL;
-    
-  }
+
+}
 
 
-export const fetchQuestions = async (values:formData) => {
-	return await axios({
-		method: "GET",
-		url: formatForAPI(values),
-	})
+export const fetchQuestions = async (values: formData) => {
+	// return await axios({
+	// 	method: "GET",
+	// 	url: formatForAPI(values),
+	// })
+
+	const url = formatForAPI(values);
+	let result
+
+	try {
+		console.log('successfull');
+
+		result = await axios.get(url)
+
+	} catch (err) {
+		console.log('failed');
+
+		throw new Error("Failed to retry")
+	}
+
+	return result
+
 };
 
 
@@ -165,58 +182,71 @@ const padTo2Digits = (num: number) => {
 export const convertMsToMinutesSeconds = (milliseconds: number) => {
 	const minutes = Math.floor(milliseconds / 60000);
 	const seconds = Math.round((milliseconds % 60000) / 1000);
-  
+
 	let retMsg;
-	if(seconds === 60){
+	if (seconds === 60) {
 		retMsg = `${minutes + 1}m`
-	}else if(minutes === 0){
+	} else if (minutes === 0) {
 		retMsg = `${padTo2Digits(seconds)}s`
-	}else{
+	} else {
 		retMsg = `${minutes}m ${padTo2Digits(seconds)}s`
 	}
 	return retMsg
-  }
+}
 
 
 export const shuffleArray = (array: any[]) => {
-	array.sort(() => Math.random() - 0.5);
-    return array;
+	// const sorted = [...array].sort(() => Math.random() - 0.5);
+	// return sorted;
+
+	let i = array.length;
+	while (--i > 0) {
+		let randIndex = Math.floor(Math.random() * (i + 1));
+		[array[randIndex], array[i]] = [array[i], array[randIndex]];
+	}
+	return array;
+
 };
 
-export const getQuizQuestions = async (values:formData) => {
-	
-    const quizQuestions = await fetchQuestions(values) as any
-	const correctAnswers: answerProp = {};
-	const initialValues:any = {};
+export const getQuizQuestions = async (values: formData) => {
 
-	const formattedQuestions = quizQuestions.data.map((val: questionProps, index: number)=>{
+	const quizQuestions = await fetchQuestions(values) as any
+	const correctAnswers: answerProp = {};
+	const initialValues: any = {};
+
+	const formattedQuestions = quizQuestions.data.map((val: questionProps, index: number) => {
 		const questionNumber = `question-${index + 1}`
+		const correctAnswerLabel = capitalizeString(val.correctAnswer)
 		let questionType = ''
 
 		initialValues[questionNumber] = ''
 
 		// merge all possible answers
 		val.incorrectAnswers.push(val.correctAnswer)
-		
-		const options = val.incorrectAnswers.map((value,key)=>{
-			return{
-				uid: `answer-${key}`,
-				label: capitalizeString(value),
+
+		const shuffledOrder = shuffleArray(val.incorrectAnswers)
+
+		let correctAnswerUID;
+
+		const options = shuffledOrder.map((value, key) => {
+			const label = capitalizeString(value)
+			const uid = `answer-${key}`
+
+			if (label === correctAnswerLabel) {
+				correctAnswerUID = uid
+			}
+
+			return {
+				uid: uid,
+				label: label,
 			}
 		})
 
-		// need to shuffle otherwise correct answer is always last 
-		const shuffledOrder = shuffleArray(options)
-		
-		const correctAnswerIndex = shuffledOrder.findIndex(object => {
-			return object.label === capitalizeString(val.correctAnswer)
-		});
-
 		const correctAnswer = {
-			uid: `answer-${correctAnswerIndex}`,
+			uid: `${correctAnswerUID}`,
 			question: val.question,
-			answer: val.correctAnswer,
-			options: shuffledOrder
+			answer: correctAnswerLabel,
+			options: options,
 		}
 		correctAnswers[questionNumber] = correctAnswer
 
@@ -231,16 +261,19 @@ export const getQuizQuestions = async (values:formData) => {
 		return {
 			uid: questionNumber,
 			questionNumber: index + 1,
-			type: questionType ,
+			type: questionType,
 			category: val.category,
 			question: val.question,
 			options: options,
-			validationSchema: 
-			Yup.object().shape({
-				[questionNumber]:  Yup.string().required(`You must select an answer`)
-			})
+			validationSchema:
+				Yup.object().shape({
+					[questionNumber]: Yup.string().required(`You must select an answer`)
+				})
 		}
 	})
+
+	console.log({ correctAnswers });
+
 
 	return {
 		questions: formattedQuestions,
@@ -250,53 +283,51 @@ export const getQuizQuestions = async (values:formData) => {
 };
 
 
-export const fetchGlobalComponents = async (client: any)  =>{
-	const header =  await client.getSingle("header");
-	const footer =  await client.getSingle("footer");
-	const colourPalette =  await client.getSingle("colour-palette");
-  
-	return {
-	  header: header?.data,
-	  footer: footer?.data,
-	  colourPalette: colourPalette?.data,
-	}
-  }
-  
+export const fetchGlobalComponents = async (client: any) => {
+	const header = await client.getSingle("header");
+	const footer = await client.getSingle("footer");
+	const colourPalette = await client.getSingle("colour-palette");
 
-export  const splitToChunks = (array: any[] | null, parts: any) => {
+	return {
+		header: header?.data,
+		footer: footer?.data,
+		colourPalette: colourPalette?.data,
+	}
+}
+
+
+export const splitToChunks = (array: any[] | null, parts: any) => {
 	let result = [];
-	if(array === null) return null
+	if (array === null) return null
 
 	const arr = JSON.parse(JSON.stringify(array));
 
 	for (let i = parts; i > 0; i--) {
-		 result.push(arr.splice(0, Math.ceil(arr.length / i))) ;
+		result.push(arr.splice(0, Math.ceil(arr.length / i)));
 	}
-	 return result;
+	return result;
 }
 
-export  const formatFormFields = (slices: any[], dynamicFields: any) => {
-	const uniqueGroups = slices.map((slice)=>slice.primary.groupUID).reduce((result, groupUID) => {
+export const formatFormFields = (slices: any[], dynamicFields: any) => {
+	const uniqueGroups = slices.map((slice) => slice.primary.groupUID).reduce((result, groupUID) => {
 		return result.includes(groupUID) ? result : [...result, groupUID];
 	}, []);
 
 	const initialValues: any = {}
 
-	const numOfGroups = uniqueGroups.length 
+	const numOfGroups = uniqueGroups.length
 
-	const groupObjects = Object.assign({}, ...Object.entries({...uniqueGroups}).map(([a,b]:any) => ({ 
+	const groupObjects = Object.assign({}, ...Object.entries({ ...uniqueGroups }).map(([a, b]: any) => ({
 		[b]: {
-		'fields' : [],
-		'validationSchema' : {},
-		'id' : a
-		} 
+			'fields': [],
+			'validationSchema': {},
+			'id': a
+		}
 	})))
 
-	slices.map((slice: { variation?: any; primary?: any; items?: any; })=>{
-		const {primary, items} = slice
-		console.log({primary});
-		
-		const {groupUID, uid, label, requiredErrorMsg, minValue, maxValue, defaultValue = ''} = primary
+	slices.map((slice: { variation?: any; primary?: any; items?: any; }) => {
+		const { primary, items } = slice
+		const { groupUID, uid, label, requiredErrorMsg, minValue, maxValue, defaultValue = '' } = primary
 		const fieldType = slice?.variation
 
 		const options = items.length > 0 ? items : null
@@ -309,36 +340,36 @@ export  const formatFormFields = (slices: any[], dynamicFields: any) => {
 			label: label,
 			requiredErrorMsg: requiredErrorMsg,
 			options: dynamicFields?.[uid] ? dynamicFields?.[uid] : options
-		} 
+		}
 
 		let validation;
 
 		switch (fieldType) {
-		case 'textInput':
-		case 'radioBasic':
-		case 'radioStyled':
-			validation = Yup.string().required(requiredErrorMsg)
-			break;
-		case 'checkboxBasic':
-		case 'checkboxStyled':
-			validation = Yup.array().min(1, requiredErrorMsg).of(Yup.string().required()).required()
-			fieldGroup['defaultValue'] = [defaultValue]
-			break;
-		case 'number':
-			validation = Yup.number().max(maxValue).min(minValue).required(requiredErrorMsg)
-			break;
-		default:
-			break;
+			case 'textInput':
+			case 'radioBasic':
+			case 'radioStyled':
+				validation = Yup.string().required(requiredErrorMsg)
+				break;
+			case 'checkboxBasic':
+			case 'checkboxStyled':
+				validation = Yup.array().min(1, requiredErrorMsg).of(Yup.string().required()).required()
+				fieldGroup['defaultValue'] = [defaultValue]
+				break;
+			case 'number':
+				validation = Yup.number().max(maxValue).min(minValue).required(requiredErrorMsg)
+				break;
+			default:
+				break;
 		}
 
-		groupObjects[groupUID]['fields'] =  [...groupObjects[groupUID]['fields'], fieldGroup]
-		groupObjects[groupUID]['validationSchema'][uid] =  validation
+		groupObjects[groupUID]['fields'] = [...groupObjects[groupUID]['fields'], fieldGroup]
+		groupObjects[groupUID]['validationSchema'][uid] = validation
 
 		initialValues[uid] = '' // add default value ternary
 	})
 
 	return {
-		initialValues:initialValues,
+		initialValues: initialValues,
 		numOfGroups: numOfGroups,
 		uniqueGroups: uniqueGroups,
 		groupObjects: groupObjects,
@@ -346,15 +377,15 @@ export  const formatFormFields = (slices: any[], dynamicFields: any) => {
 }
 
 
-export const createCSSVar = (type:string, name: string,  value: string) => {
+export const createCSSVar = (type: string, name: string, value: string) => {
 	return `--theme-${type}-${name}:${value};`;
 }
 
-export const createGroupCSSVar = (groupName: string,name: string, val1: string, val2: string) => {
+export const createGroupCSSVar = (groupName: string, name: string, val1: string, val2: string) => {
 	let returnString = '';
 	if (val1) {
 		returnString = createCSSVar(groupName, name, val1)
-	}else if (val2){
+	} else if (val2) {
 		returnString = createCSSVar(groupName, name, val2)
 	}
 	return returnString

@@ -1,10 +1,21 @@
 
 import { FC, useCallback, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
-import { PageLayoutProps } from "../../common/types";
-import { PageFooter } from "../Footer";
-import { PageHeader } from "../Header";
+import { HeaderProps, PageFooterProps, PageLayoutProps } from "../../common/types";
 import Global from "./Global";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const PageHeader = dynamic<HeaderProps | any>(() => import('../Header/Page'), {
+  suspense: true,
+})
+
+const PageFooter = dynamic<PageFooterProps | any>(() => import('../Footer/Page'), {
+  suspense: true,
+})
+
+
+
 
 const Page: FC<PageLayoutProps> = ({  children, seo, header,footer,colourPalette }) => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -49,11 +60,18 @@ const Page: FC<PageLayoutProps> = ({  children, seo, header,footer,colourPalette
   return (
     <>
       <Global seo={seo} colourPalette={colourPalette}>
-        <PageHeader ref={headerRef} {...headerFunctions} {...header}/>
+        <Suspense fallback={`Loading...`}>
+          <PageHeader ref={headerRef} {...headerFunctions} {...header}/>
+        </Suspense>
+
         <div ref={ref} className=" w-full  px-4  lg:px-12  bg-custom-secondary  flex flex-col justify-center items-center   gap-4 flex-1 " style={containerStyle}>
           {children}
         </div>
-        <PageFooter {...footer}/>
+
+        <Suspense fallback={`Loading...`}>
+          <PageFooter {...footer}/>
+        </Suspense>
+        
       </Global> 
     </>
   )

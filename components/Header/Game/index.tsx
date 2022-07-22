@@ -25,6 +25,7 @@ const Game = React.forwardRef<HTMLDivElement>(({}, ref) => {
   const percentCompleted:any = (questionNumber / limit) * 100
   const isCompleted = questionNumber > limit ? true : false
   const currentQuestion = `Question ${questionNumber} /`
+  wrapperAnimationSettings['viewport']  = { once: true, amount: 0 }
   
   return (
 

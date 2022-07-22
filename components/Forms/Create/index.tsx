@@ -114,8 +114,6 @@ const Create = ({initialValues, numOfGroups, uniqueGroups, groupObjects}:FormWra
     actions.setSubmitting(false);
     setResults(null)
     updateActiveStep(0)
-    console.log({values});
-    
     setupQuiz(values)
     createNewSettings(values)
     setCreatingGame(true);

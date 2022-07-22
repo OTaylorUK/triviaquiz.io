@@ -1,18 +1,28 @@
 import type { NextPage } from 'next';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import ISOCountryCode from '../../common/ISOCountryCode.json';
 import { PageProps } from '../../common/types';
 import { fetchGlobalComponents, formatFormFields, getQuizCategories } from '../../common/utils';
-import Create from '../../components/Forms/Create';
+import Loader from '../../components/component/Loader';
 import { App } from '../../components/Layout';
 import { createClient } from "../../prismicio";
 
+const Create = dynamic<any>(() => import('../../components/Forms/Create'), {
+  suspense: true,
+})
 
-const CreateGame: NextPage<PageProps> = ({slices, seo, colourPalette,header, footer, dynamicFields}) => {
-  const {initialValues, numOfGroups, uniqueGroups, groupObjects} = formatFormFields(slices, dynamicFields)
+
+const CreateGame: NextPage<PageProps> = ({ slices, seo, colourPalette, header, footer, dynamicFields }) => {
+  const { initialValues, numOfGroups, uniqueGroups, groupObjects } = formatFormFields(slices, dynamicFields)
   return (
     <>
       <App seo={seo} header={header} footer={footer} colourPalette={colourPalette} limit={numOfGroups}>
-        <Create initialValues={initialValues} numOfGroups={numOfGroups} uniqueGroups={uniqueGroups} groupObjects={groupObjects} />
+
+        <Suspense fallback={<Loader />}>
+          <Create initialValues={initialValues} numOfGroups={numOfGroups} uniqueGroups={uniqueGroups} groupObjects={groupObjects} />
+        </Suspense>
+
       </App>
     </>
   )
@@ -20,11 +30,11 @@ const CreateGame: NextPage<PageProps> = ({slices, seo, colourPalette,header, foo
 
 
 
-export async function getStaticProps({ previewData }: {previewData: any}) {
+export async function getStaticProps({ previewData }: { previewData: any }) {
   const client = createClient({ previewData });
 
   // GLOBAL
-  const{header, footer, colourPalette} = await fetchGlobalComponents(client)
+  const { header, footer, colourPalette } = await fetchGlobalComponents(client)
 
   // PAGE SPECIFIC
   const page = await client.getByUID('site-page', 'create')
@@ -36,19 +46,19 @@ export async function getStaticProps({ previewData }: {previewData: any}) {
   const avatars = []
 
   for (let i = 0; i < avatarCount; i++) {
-      const filename = `adventurerNeutral-${i}`
-      const avatar = {
-          uid: filename,
-          label: filename,
-          img: `/avatars/${filename}`
-      }
-      avatars.push(avatar)
-  } 
+    const filename = `adventurerNeutral-${i}`
+    const avatar = {
+      uid: filename,
+      label: filename,
+      img: `/avatars/${filename}`
+    }
+    avatars.push(avatar)
+  }
 
 
 
   const dynamicFields = {
-    categories:quizCategories,
+    categories: quizCategories,
     avatar: avatars,
     userLocation: ISOCountryCode
   }

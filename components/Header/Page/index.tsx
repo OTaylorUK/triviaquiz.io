@@ -48,6 +48,7 @@ const Page = React.forwardRef<HTMLDivElement, HeaderProps>(({logoContent,logoLin
         content: logoContent,
         link: logoLink,
     }   
+    
 
     return(
         <div ref={ref} className={` flex flex-row items-center h-20  fixed top-0 left-0  z-20 w-full `}>

@@ -5,11 +5,18 @@ import shallow from 'zustand/shallow';
 import { PageProps } from '../../common/types';
 import { fetchGlobalComponents } from '../../common/utils';
 import Loader from '../../components/component/Loader';
-import Quiz from '../../components/Forms/Game/Quiz';
+// import Quiz from '../../components/Forms/Game/Quiz';
 import Game from '../../components/Layout/Game';
 import { createClient } from "../../prismicio";
 import { gameStore } from '../../store/game';
 import { gameSettingStore } from '../../store/user';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const Quiz = dynamic<any>(() => import('../../components/Forms/Game/Quiz'), {
+  suspense: true,
+})
+
 
 const Home: NextPage<PageProps> = ({seo, colourPalette,header, footer}) => {
 
@@ -43,7 +50,9 @@ const Home: NextPage<PageProps> = ({seo, colourPalette,header, footer}) => {
   return (
     <>
       <Game seo={seo} header={header} footer={footer} colourPalette={colourPalette}>
-        <Quiz />
+        <Suspense fallback={<Loader />}>
+          <Quiz />
+        </Suspense>
       </Game>
     </>
   )
